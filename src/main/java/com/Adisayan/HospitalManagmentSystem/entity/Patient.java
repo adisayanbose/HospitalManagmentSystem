@@ -3,7 +3,8 @@ package com.Adisayan.HospitalManagmentSystem.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.data.annotation.CreatedDate;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -26,7 +27,7 @@ public class Patient {
     private String gender;
     private LocalDate birthdate;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
     private String bloodGroup;
 
