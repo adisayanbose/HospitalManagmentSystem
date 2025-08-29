@@ -1,17 +1,25 @@
 package com.Adisayan.HospitalManagmentSystem.Service;
 
+import com.Adisayan.HospitalManagmentSystem.DTO.PatientDto;
+import com.Adisayan.HospitalManagmentSystem.Mappers.PatientMapper;
 import com.Adisayan.HospitalManagmentSystem.entity.Patient;
 import com.Adisayan.HospitalManagmentSystem.repository.PatientRepository;
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
 public class PatientService {
 
     private final PatientRepository patientRepository;
+    private final PatientMapper patientMapper;
 
     public Patient addPatient(Patient patient) {
         patientRepository.save(patient);
@@ -26,11 +34,19 @@ public class PatientService {
         return patientRepository.findById(id).get();
     }
 
+    @Transactional
     public void deletePatient(Long id) {
-        patientRepository.deleteById(id);
+        if (patientRepository.existsById(id)) {
+            patientRepository.deleteById(id);
+        } else {
+            throw new NoSuchElementException();
+        }
     }
 
-    public void updatePatient(Patient patient) {
-        patientRepository.save(patient);
+    public Patient updatePatient(PatientDto patientDto, Long id) {
+        Patient existingPatient = patientRepository.findById(id).get();
+        patientMapper.PatientDtoToPatient(patientDto, existingPatient);
+        System.out.println(existingPatient);
+        return patientRepository.save(existingPatient);
     }
 }

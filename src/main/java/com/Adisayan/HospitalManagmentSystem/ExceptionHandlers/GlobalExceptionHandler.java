@@ -4,6 +4,7 @@ import com.Adisayan.HospitalManagmentSystem.DTO.ApiResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -34,11 +35,16 @@ public class GlobalExceptionHandler {
                 HttpStatus.CONFLICT
         );
     }
- 
+
     @ExceptionHandler({NoSuchElementException.class})
     public ResponseEntity<ApiResponse> handleMissingElementException(Exception ex) {
-        System.out.println(ex.getCause());
         return new ResponseEntity<>(ApiResponse.error("No such element Found for the given parameter", ex.getMessage()), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler({EmptyResultDataAccessException.class})
+    public ResponseEntity<ApiResponse<?>> handleEmptyDataAccessException(Exception ex) {
+        System.out.println(ex.getCause());
+        return new ResponseEntity<>(ApiResponse.error("operation unsuccesful", ex.getMessage()), HttpStatus.NOT_FOUND);
     }
 
 }

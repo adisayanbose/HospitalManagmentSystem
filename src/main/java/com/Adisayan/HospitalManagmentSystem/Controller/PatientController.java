@@ -1,11 +1,10 @@
 package com.Adisayan.HospitalManagmentSystem.Controller;
 
 import com.Adisayan.HospitalManagmentSystem.DTO.ApiResponse;
+import com.Adisayan.HospitalManagmentSystem.DTO.PatientDto;
 import com.Adisayan.HospitalManagmentSystem.Service.PatientService;
 import com.Adisayan.HospitalManagmentSystem.entity.Patient;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,24 +31,22 @@ public class PatientController {
     }
 
     @GetMapping("/patient/{id}")
-    public ResponseEntity<ApiResponse> viewPatient(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse<Patient>> viewPatient(@PathVariable Long id) {
         Patient patient = patientService.getPatient(id);
         return new ResponseEntity<>(ApiResponse.success("user fetched", patient), HttpStatus.OK);
     }
 
     @PutMapping("/patient/{id}")
-    public void updatePatient(@PathVariable Long id, @RequestBody Patient patient) {
-        patient.setId(id);
-        System.out.println(patient.toString());
-        patientService.updatePatient(patient);
-        //  return new ResponseEntity<>(ApiResponse.success("updated Patient Successfully ", patient), HttpStatus.OK);
+    public ResponseEntity<ApiResponse<Patient>> updatePatient(@PathVariable Long id, @RequestBody PatientDto patientDto) {
+        System.out.println(patientDto);
+        Patient patient = patientService.updatePatient(patientDto, id);
+        return new ResponseEntity<>(ApiResponse.success("updated Patient Successfully ", patient), HttpStatus.OK);
     }
 
     @DeleteMapping("/patient/{id}")
-    public ResponseEntity<ApiResponse> DeletePatient(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse<?>> DeletePatient(@PathVariable Long id) {
         patientService.deletePatient(id);
-        return new ResponseEntity<>(ApiResponse.success("Succesfully deleted patient" + id, null
-        ), HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(ApiResponse.success("delted succesfully", null), HttpStatus.OK);
     }
 
 }
