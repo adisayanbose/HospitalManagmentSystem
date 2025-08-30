@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @Entity
@@ -26,4 +27,8 @@ public class Doctor {
     private String email;
     @CreationTimestamp
     private LocalDateTime JoiningDate;
+    @OneToMany(mappedBy = "doctors")
+    private List<Department> departments;
+//    @OneToMany(mappedBy = "")
+//    private List<Appointment> appointments;
 }

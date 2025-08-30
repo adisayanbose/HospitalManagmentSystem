@@ -1,18 +1,30 @@
 package com.Adisayan.HospitalManagmentSystem.Controller;
 
+import com.Adisayan.HospitalManagmentSystem.DTO.ApiResponse;
+import com.Adisayan.HospitalManagmentSystem.Service.AppointmentService;
 import com.Adisayan.HospitalManagmentSystem.entity.Appointment;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@RestController
+@RequiredArgsConstructor
 public class appointmentController {
 
-    @PostMapping("/appointment")
-    public void createAppointment(@RequestBody Appointment appointment) {
+    private final AppointmentService appointmentService;
 
+    @PostMapping("/appointment")
+    public ResponseEntity<ApiResponse<Appointment>> createAppointment(@RequestBody Appointment appointment) {
+        Appointment createdAppointment = appointmentService.createAppointment(appointment);
+        return new ResponseEntity<>(ApiResponse.success("Appointment Genrated", createdAppointment), HttpStatus.CREATED);
     }
 
     @GetMapping("/appointment")
-    public void getAllAppointments() {
-
+    public ResponseEntity<ApiResponse<Page<Appointment>>> getAllAppointments(@RequestParam(defaultValue = "0") int pageNumber, @RequestParam(defaultValue = "1") int pageSize) {
+        Page<Appointment> appointmentPage = appointmentService.getAppointments(pageNumber, pageSize);
+        return new ResponseEntity<>(ApiResponse.success("Fetched appointments", appointmentPage), HttpStatus.OK);
     }
 
     @GetMapping("/appointment/{id}")
