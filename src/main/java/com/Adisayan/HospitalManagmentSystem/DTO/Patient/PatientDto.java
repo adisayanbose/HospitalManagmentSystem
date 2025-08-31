@@ -1,4 +1,4 @@
-package com.Adisayan.HospitalManagmentSystem.DTO;
+package com.Adisayan.HospitalManagmentSystem.DTO.Patient;
 
 
 import lombok.Getter;

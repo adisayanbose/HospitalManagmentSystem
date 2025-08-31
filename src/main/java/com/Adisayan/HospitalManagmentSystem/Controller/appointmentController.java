@@ -1,6 +1,7 @@
 package com.Adisayan.HospitalManagmentSystem.Controller;
 
 import com.Adisayan.HospitalManagmentSystem.DTO.ApiResponse;
+import com.Adisayan.HospitalManagmentSystem.DTO.Appointment.AppointmentResponseDto;
 import com.Adisayan.HospitalManagmentSystem.Service.AppointmentService;
 import com.Adisayan.HospitalManagmentSystem.entity.Appointment;
 import lombok.RequiredArgsConstructor;
@@ -16,8 +17,8 @@ public class appointmentController {
     private final AppointmentService appointmentService;
 
     @PostMapping("/appointment")
-    public ResponseEntity<ApiResponse<Appointment>> createAppointment(@RequestBody Appointment appointment) {
-        Appointment createdAppointment = appointmentService.createAppointment(appointment);
+    public ResponseEntity<ApiResponse<AppointmentResponseDto>> createAppointment(@RequestBody Appointment appointment, @RequestParam Long id) {
+        AppointmentResponseDto createdAppointment = appointmentService.createAppointment(appointment, id);
         return new ResponseEntity<>(ApiResponse.success("Appointment Genrated", createdAppointment), HttpStatus.CREATED);
     }
 

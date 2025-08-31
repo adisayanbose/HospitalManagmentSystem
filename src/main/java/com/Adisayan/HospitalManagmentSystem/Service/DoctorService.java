@@ -2,7 +2,7 @@ package com.Adisayan.HospitalManagmentSystem.Service;
 
 import com.Adisayan.HospitalManagmentSystem.Mappers.DoctorMapper;
 import com.Adisayan.HospitalManagmentSystem.entity.Doctor;
-import com.Adisayan.HospitalManagmentSystem.entity.DoctorDto;
+import com.Adisayan.HospitalManagmentSystem.DTO.Doctor.DoctorDto;
 import com.Adisayan.HospitalManagmentSystem.repository.DoctorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

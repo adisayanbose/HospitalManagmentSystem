@@ -1,7 +1,7 @@
 package com.Adisayan.HospitalManagmentSystem.Mappers;
 
 import com.Adisayan.HospitalManagmentSystem.entity.Doctor;
-import com.Adisayan.HospitalManagmentSystem.entity.DoctorDto;
+import com.Adisayan.HospitalManagmentSystem.DTO.Doctor.DoctorDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;

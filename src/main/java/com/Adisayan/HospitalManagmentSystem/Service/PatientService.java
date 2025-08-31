@@ -1,14 +1,11 @@
 package com.Adisayan.HospitalManagmentSystem.Service;
 
-import com.Adisayan.HospitalManagmentSystem.DTO.PatientDto;
+import com.Adisayan.HospitalManagmentSystem.DTO.Patient.PatientDto;
 import com.Adisayan.HospitalManagmentSystem.Mappers.PatientMapper;
 import com.Adisayan.HospitalManagmentSystem.entity.Patient;
 import com.Adisayan.HospitalManagmentSystem.repository.PatientRepository;
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

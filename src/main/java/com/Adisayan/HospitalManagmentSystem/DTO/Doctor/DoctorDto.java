@@ -1,8 +1,6 @@
-package com.Adisayan.HospitalManagmentSystem.entity;
+package com.Adisayan.HospitalManagmentSystem.DTO.Doctor;
 
-import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 

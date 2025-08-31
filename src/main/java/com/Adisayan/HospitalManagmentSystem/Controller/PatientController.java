@@ -1,7 +1,7 @@
 package com.Adisayan.HospitalManagmentSystem.Controller;
 
 import com.Adisayan.HospitalManagmentSystem.DTO.ApiResponse;
-import com.Adisayan.HospitalManagmentSystem.DTO.PatientDto;
+import com.Adisayan.HospitalManagmentSystem.DTO.Patient.PatientDto;
 import com.Adisayan.HospitalManagmentSystem.Service.PatientService;
 import com.Adisayan.HospitalManagmentSystem.entity.Patient;
 import lombok.RequiredArgsConstructor;

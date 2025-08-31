@@ -3,7 +3,7 @@ package com.Adisayan.HospitalManagmentSystem.Controller;
 import com.Adisayan.HospitalManagmentSystem.DTO.ApiResponse;
 import com.Adisayan.HospitalManagmentSystem.Service.DoctorService;
 import com.Adisayan.HospitalManagmentSystem.entity.Doctor;
-import com.Adisayan.HospitalManagmentSystem.entity.DoctorDto;
+import com.Adisayan.HospitalManagmentSystem.DTO.Doctor.DoctorDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
