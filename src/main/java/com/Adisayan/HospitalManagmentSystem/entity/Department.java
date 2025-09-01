@@ -23,7 +23,7 @@ public class Department {
     private String name;
     private LocalDateTime createdAt;
 
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "department")
     private List<Doctor> doctors;
 
     @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)

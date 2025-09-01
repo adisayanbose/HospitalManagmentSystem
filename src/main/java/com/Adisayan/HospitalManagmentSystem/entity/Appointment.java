@@ -1,10 +1,7 @@
 package com.Adisayan.HospitalManagmentSystem.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
@@ -15,6 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class Appointment {
 
     @Id
@@ -26,4 +24,6 @@ public class Appointment {
     private String status;
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private Patient patient;
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    private Doctor doctor;
 }
