@@ -1,7 +1,7 @@
 package com.Adisayan.HospitalManagmentSystem.DTO.Appointment;
 
 import com.Adisayan.HospitalManagmentSystem.DTO.Doctor.DoctorDto;
-import com.Adisayan.HospitalManagmentSystem.DTO.Patient.PatientDto;
+import com.Adisayan.HospitalManagmentSystem.DTO.Patient.PatientDetailResponseDto;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +14,6 @@ public class AppointmentResponseDto {
     private LocalDateTime appointmentTime;
     private String reason;
     private String status;
-    private PatientDto patient;
+    private PatientDetailResponseDto patient;
     private DoctorDto doctor;
 }

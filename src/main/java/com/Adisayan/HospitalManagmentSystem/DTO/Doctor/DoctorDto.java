@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 @Setter
 @ToString
 public class DoctorDto {
-
     private Long id;
     private String name;
     private String specialization;

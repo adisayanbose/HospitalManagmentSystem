@@ -1,6 +1,7 @@
 package com.Adisayan.HospitalManagmentSystem.Controller;
 
 import com.Adisayan.HospitalManagmentSystem.DTO.ApiResponse;
+import com.Adisayan.HospitalManagmentSystem.DTO.Doctor.DoctorSummaryDto;
 import com.Adisayan.HospitalManagmentSystem.Service.DoctorService;
 import com.Adisayan.HospitalManagmentSystem.entity.Doctor;
 import com.Adisayan.HospitalManagmentSystem.DTO.Doctor.DoctorDto;
@@ -24,8 +25,8 @@ public class DoctorController {
     }
 
     @GetMapping("/doctor")
-    public ResponseEntity<ApiResponse<List<Doctor>>> getDoctors() {
-        List<Doctor> doctors = doctorService.getAllDoctors();
+    public ResponseEntity<ApiResponse<List<DoctorSummaryDto>>> getDoctors() {
+        List<DoctorSummaryDto> doctors = doctorService.getAllDoctors();
         return new ResponseEntity<>(ApiResponse.success("fetched all doctors", doctors), HttpStatus.OK);
     }
 

@@ -17,5 +17,5 @@ public interface AppointmentMapper {
 
     public List<AppointmentResponseDto> toAppointmentResponseDtoList(Page<Appointment> appointmentPage);
 
-    public Appointment updateAppointment(AppointmentRequestDTO appointmentRequestDTO, @MappingTarget Appointment appointment);
+    public void updateAppointment(AppointmentRequestDTO appointmentRequestDTO, @MappingTarget Appointment appointment);
 }

@@ -1,17 +1,16 @@
 package com.Adisayan.HospitalManagmentSystem.DTO.Patient;
 
-
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
+
 
 @Getter
 @Setter
 @ToString
-public class PatientDto {
+public class PatientSummaryResponseDto {
     private Long id;
     private String name;
     private String gender;
@@ -19,5 +18,5 @@ public class PatientDto {
     private String email;
     private String bloodGroup;
     private LocalDateTime admittedAt;
-
+    private List<Long> appointmentId;
 }

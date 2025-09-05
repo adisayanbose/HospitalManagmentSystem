@@ -1,7 +1,9 @@
 package com.Adisayan.HospitalManagmentSystem.Controller;
 
 import com.Adisayan.HospitalManagmentSystem.DTO.ApiResponse;
-import com.Adisayan.HospitalManagmentSystem.DTO.Patient.PatientDto;
+import com.Adisayan.HospitalManagmentSystem.DTO.Patient.PatientDetailResponseDto;
+import com.Adisayan.HospitalManagmentSystem.DTO.Patient.PatientRequestDto;
+import com.Adisayan.HospitalManagmentSystem.DTO.Patient.PatientSummaryResponseDto;
 import com.Adisayan.HospitalManagmentSystem.Service.PatientService;
 import com.Adisayan.HospitalManagmentSystem.entity.Patient;
 import lombok.RequiredArgsConstructor;
@@ -19,14 +21,14 @@ public class PatientController {
     private final PatientService patientService;
 
     @PostMapping("/patient")
-    public ResponseEntity<ApiResponse> createPatient(@RequestBody Patient patient) {
+    public ResponseEntity<ApiResponse<Patient>> createPatient(@RequestBody PatientRequestDto patient) {
         Patient createdPatient = patientService.addPatient(patient);
         return new ResponseEntity<>(ApiResponse.success("Patient Created", createdPatient), HttpStatus.CREATED);
     }
 
     @GetMapping("/patient")
-    public ResponseEntity<ApiResponse> getAllPatients() {
-        List<Patient> patients = patientService.getAllPatients();
+    public ResponseEntity<ApiResponse<List<PatientSummaryResponseDto>>> getAllPatients() {
+        List<PatientSummaryResponseDto> patients = patientService.getAllPatients();
         return new ResponseEntity<>(ApiResponse.success("fetched all the patients", patients), HttpStatus.OK);
     }
 
@@ -37,9 +39,9 @@ public class PatientController {
     }
 
     @PutMapping("/patient/{id}")
-    public ResponseEntity<ApiResponse<Patient>> updatePatient(@PathVariable Long id, @RequestBody PatientDto patientDto) {
-        System.out.println(patientDto);
-        Patient patient = patientService.updatePatient(patientDto, id);
+    public ResponseEntity<ApiResponse<Patient>> updatePatient(@PathVariable Long id, @RequestBody PatientDetailResponseDto patientDetailResponseDto) {
+        System.out.println(patientDetailResponseDto);
+        Patient patient = patientService.updatePatient(patientDetailResponseDto, id);
         return new ResponseEntity<>(ApiResponse.success("updated Patient Successfully ", patient), HttpStatus.OK);
     }
 

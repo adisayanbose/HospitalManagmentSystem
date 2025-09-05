@@ -15,7 +15,6 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
 public class Patient {
 
     @Id
@@ -39,6 +38,5 @@ public class Patient {
     private Insurance insurance;
 
     @OneToMany(mappedBy = "patient")
-    @ToString.Exclude
     private List<Appointment> appointments;
 }
